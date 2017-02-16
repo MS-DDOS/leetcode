@@ -38,7 +38,7 @@ void push(struct node ** head_ref, int data) {
 	struct node * new_node = (struct node*)malloc(sizeof(struct node));
 	
 	new_node->val = data;
-	new_node->next = *head_ref; //deref since its a pointer
+	new_node->next = *head_ref; //deref since its by reference
 	*head_ref = new_node;
 }
 
