@@ -5,6 +5,17 @@ class ListNode(object):
         self.next = None
 
 class Solution(object):
+    def rev_list(self, head):
+        prev = None
+        curr = head
+        while curr is not None:
+            _next = curr.next
+            curr.next = prev
+            prev = curr
+            curr = _next
+        head = prev
+        return head
+
     def reverseList(self, head):
         """
         :type head: ListNode
@@ -47,7 +58,7 @@ if __name__ == "__main__":
         temp = temp.next
 
     print "Reversing..."
-    temp = x.reverseList(node)
+    temp = x.rev_list(node)
 
     while temp != None:
         print temp.val
