@@ -1,5 +1,5 @@
 #include <iostream>
-#include <string>
+#include <cstring>
 #include <vector>
 
 char* urlify(char*);
@@ -9,20 +9,21 @@ int main(int argc, char ** argv) {
 	char * y = urlify(x);
 	std::cout << x << std::endl;
 	std::cout << y << std::endl;
-	free(y);
+	delete[] y;
+	return 0;
 }
 
 char * urlify(char * input){
-	std::vector<int> space_idx;
+	std::vector<int> * space_idx = new std::vector<int>();
 	int input_len = strlen(input);
 	for(int i = 0; i < input_len; i++){
 		if(input[i] == ' ')
-			space_idx.push_back(i);
+			space_idx->push_back(i);
 	}
-	int new_len = input_len + (space_idx.size()*2) + 1; //make room for additional characters and null terminator
+	int new_len = input_len + (space_idx->size()*2) + 1; //make room for additional characters and null terminator
 	char * urlified = new char[new_len];
 	urlified[new_len] = '\0';
-	std::vector<int>::iterator s = space_idx.begin();
+	std::vector<int>::iterator s = space_idx->begin();
 	int offset = 0;
 	for(int i = 0; i < input_len; i++){
 		if(i == *s){
@@ -35,5 +36,6 @@ char * urlify(char * input){
 		if(input[i] != ' ')
 			urlified[i + offset] = input[i];
 	}
+	delete space_idx;
 	return urlified;
 }
