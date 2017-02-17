@@ -3,6 +3,8 @@
 #include <string>
 #include <sstream>
 
+//This program is a C++ implemenation of the string compression algorithm.
+
 std::string compress(std::string);
 
 int main(int argc, char ** argv){
