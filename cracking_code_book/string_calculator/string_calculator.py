@@ -17,6 +17,9 @@ def string_add(augend, addend):
 		return "0"
 	carry = 0
 	accumulator = deque()
+	'''
+	We can perform this swap because of the commutative property of addition which states that x+y == y+x
+	'''
 	if len(augend) > len(addend):
 		augend = deque(augend)
 		addend = deque(addend)
@@ -46,8 +49,6 @@ def string_mult(multiplicand, multiplier):
 	carry = 0
 	committed = ""
 	accumulator = deque()
-	multiplier = deque(multiplier)
-	multiplicand = deque(multiplicand)
 	for i in xrange(len(multiplier)-1,-1,-1):
 		for j in xrange(len(multiplicand)-1, -1, -1):
 			val = (int(multiplier[i]) * int(multiplicand[j])) + carry # largest possible value is 81 + 9 = 90
